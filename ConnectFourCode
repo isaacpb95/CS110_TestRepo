@@ -16,9 +16,47 @@ I hereby certify that this program is entirely my own work.
 #include <iostream>
 using namespace std;
 
-int main()
-{
+char board[6][7]; // 6X7 array of chars 
+unsigned int i;
+unsigned int j;
+
+void initilizeBoard() {
+    for (i = 0; i < 6; i++) {
+        for (j = 0; j < 7; j++) {
+        board[i][j] = ' '; // delcares every char as empty 
+        }
+     }
+    return;
+}
+
+void displayBoard() {
+    // Labels each column 1 - 7
+    for (i = 1; i <= 7; i++) {
+        cout << " " << i;
+    }
+    cout << endl;
+
+    // Displays the board
+    for (i = 0; i < 6; i++) {
+        cout << "|";
+        for (j = 0; j < 7; j++) {
+            cout << board[i][j] << "|";
+        }
+        cout << endl;
+    }
+}
+
+
+int main() {
+
+    initilizeBoard();
+    displayBoard();
+
+
+
+
 
 return 0;
 }
+
 
