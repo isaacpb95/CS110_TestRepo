@@ -1,0 +1,18 @@
+/****************************************************************
+File: 
+Description: 
+Author:
+Class:
+Date:
+I hereby certify that this program is entirely my own work.
+*****************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+return 0;
+}
+
