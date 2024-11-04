@@ -3,55 +3,132 @@
 // UPDATE THIS FILE WITH YOUR WORKING CODE
 
 //MAKE NOTES OF WHAT YOU DO UP HERE PLS
-// I completed the initilizeBoard function and the displayBoard function - cayden
+// I completed the initilizeBoard function and the displayBoard function - Cayden
+// Added #include <cstdlib>, function for coin toss - CoinFlip()
+// also added a welcome screen as well as an optional function for RuleSet() to be displayed in
+// the beginning. I also widened the board a bit. - Isaac
 
 /****************************************************************
 File: 
-Description: 
-Author:
-Class:
-Date:
+Description: Connect Four
+Author: Cayden Harry, Isaac Plascencia-Barrigan
+Class: CSCI - 110
+Date: November 2024
 I hereby certify that this program is entirely my own work.
 *****************************************************************/
 
+#include <cstdlib>
 #include <iostream>
 using namespace std;
 
-char board[6][7]; // 6X7 array of chars 
+char board[6][7]; // 6 x 7 array of chars 
 unsigned int i;
 unsigned int j;
 
 void initilizeBoard() {
     for (i = 0; i < 6; i++) {
         for (j = 0; j < 7; j++) {
-        board[i][j] = ' '; // delcares every char as empty 
+            board[i][j] = ' '; // Delcares every char as empty 
         }
-     }
+    }
     return;
 }
 
 void displayBoard() {
     // Labels each column 1 - 7
     for (i = 1; i <= 7; i++) {
-        cout << " " << i;
+        cout << "  " << i << " ";
     }
     cout << endl;
 
     // Displays the board
     for (i = 0; i < 6; i++) {
-        cout << "|";
+        cout << "| ";
         for (j = 0; j < 7; j++) {
-            cout << board[i][j] << "|";
+            cout << board[i][j] << " | ";
         }
         cout << endl;
     }
+    return;
 }
 
+void RuleSet() {
+    cout << "1. Game Setup" << endl;
+    cout << "   - The Connect Four board consists of a grid with seven columns and six rows." << endl;
+    cout << "   - Players decide who will go first, often by a coin flip or mutual agreement." << endl;
+    cout << "   - Each player chooses a color of disc, typically red and yellow, which distinguishes their moves, in this case it will be either X or O." << endl;
+    cout << endl;
+    cout << "2. Objective of the Game" << endl;
+    cout << "   - The primary goal is to connect four of your discs in a straight line(vertically, horizontally, or diagonally) before your opponent does." << endl;
+    cout << "   - The game ends as soon as a player achieves a line of four connected discs, or if the grid fills up with no winner, resulting in a draw." << endl;
+    cout << endl;
+    cout << "3. Gameplay" << endl;
+    cout << "   - Turns: Players alternate turns. On each turn, a player drops one disc from the top of any of the seven columns." << endl;
+    cout << "   - Column Capacity: Each column can hold up to six discs(one per row).Once a column is filled with six discs, no more discs can be dropped into that column." << endl;
+    cout << endl;
+    cout << "4. Winning Conditions" << endl;
+    cout << "   - Four in a Row: A player wins by being the first to align four of their discs consecutively in one of the following ways:" << endl;
+    cout << "   - Horizontally: Four discs in a straight line across any row." << endl;
+    cout << "   - Vertically: Four discs in a straight line down any column." << endl;
+    cout << "   - Diagonally: Four discs in a diagonal line, either from bottom - left to top - right or from bottom - right to top - left." << endl;
+    cout << "   - Draw: If all columns are filled and no player has achieved a four - disc connection, the game ends in a draw." << endl;
+    cout << endl;
+    cout << "5. HAVE FUN!" << endl;
+    return;
+}
 
-int main() {
+string CoinFlip() {
+    int result = rand() % 2; // Generate either 0 or 1
+    if (result == 1) {
+        return "Heads";
+    } else {
+        return "Tails";
+    }
+}
 
-    initilizeBoard();
-    displayBoard();
+int main()
+{
+    int coinFlips;
+    char rules;
+    cout << "WELCOME TO CONNECT FOUR!" << endl;
+    cout << endl << "Would you like to view the rule set?" << endl;
+    cout << "Y or N: ";
+    cin >> rules;
+    cout << endl;
+    if (rules == 'Y' || rules == 'y') {
+        RuleSet();
+        cout << endl;
+        cout << "Get ready to flip the coin!" << endl;
+        cout << "Choose who will be Heads and who will be Tails." << endl;
+        cout << "Enter how many coin tosses you would like to perform from 1-10." << endl;
+        cout << "Good Luck!" << endl;
+    }
+    if (rules != 'Y' && rules != 'y') {
+        cout << endl;
+        cout << "Get ready to flip the coin!" << endl;
+        cout << "Choose who will be Heads and who will be Tails." << endl;
+        cout << "Enter how many coin tosses you would like to perform from 1-10." << endl;
+        cout << "Good Luck!" << endl;
+    }
+    cout << endl;
+    cin >> coinFlips;
+    cout << endl;
+    srand(2); // Set seed for random number generator
+
+    for (int i = 0; i < coinFlips; ++i) {
+        cout << CoinFlip() << endl;
+    }
+    cout << endl;
+    if (coinFlips > 0) {
+        cout << "Ready player 1! You are X." << endl << endl;
+        initilizeBoard();
+        displayBoard();
+    }
+
+
+
+    return 0;
+}
 
 
 
